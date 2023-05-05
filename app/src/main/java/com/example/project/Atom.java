@@ -9,7 +9,7 @@ public class Atom {
     public Atom(){
         name="No name";
         type="No type";
-        atomNumber=-1;
+        atomNumber=0;
     }
 
     public Atom(String n, String t, int a)
@@ -21,7 +21,7 @@ public class Atom {
 
     public String info(){
         String tmp = new String();
-        tmp+=name+" is a type of " + type + " and is the atomic number " + atomNumber;
+        tmp+= "Name:" + name + " Type:"  + type + "  Atomic number: " + atomNumber;
         return tmp;
     }
 

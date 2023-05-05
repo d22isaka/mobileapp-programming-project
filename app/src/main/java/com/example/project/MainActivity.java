@@ -4,11 +4,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
+
+    Atom atom = new Atom("Helium", "nonMetal", 1 );
+    String info = atom.info();
+
 
 
     @Override
@@ -19,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         Button about = findViewById(R.id.about);
+        TextView textView = findViewById(R.id.textView);
+
+        textView.setText(info);
 
         about.setOnClickListener(new View.OnClickListener() {
             @Override
