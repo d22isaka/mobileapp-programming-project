@@ -1,6 +1,7 @@
 package com.example.project;
 
 public class Atom {
+    String id;
     private String name;
     private String type;
     private int atomNumber;
@@ -12,8 +13,9 @@ public class Atom {
         atomNumber=0;
     }
 
-    public Atom(String n, String t, int a)
+    public Atom(String i, String n, String t, int a)
     {
+        id=i;
         name=n;
         type=t;
         atomNumber=a;
@@ -31,6 +33,14 @@ public class Atom {
 
     public String getName(){
         return name;
+    }
+
+    public String getType(){
+        return type;
+    }
+
+    public String getId(){
+        return id;
     }
 
     @Override

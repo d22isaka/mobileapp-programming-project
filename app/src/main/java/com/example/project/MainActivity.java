@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,22 +18,22 @@ import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
-    Atom atom = new Atom("Helium", "nonMetal", 1 );
-    String info = atom.info();
+  //  Atom atom = new Atom("Helium", "nonMetal", 1 );
+    //String info = atom.info();
 
     private RecyclerViewAdapter adapter;
 
     ArrayList<Atom> atoms = new ArrayList<>(Arrays.asList(
-            new Atom ("Väte", "Icke-metaller", 1),
-            new Atom("Helium", "Ädelgas", 2),
-            new Atom("Litium", "Alkalimetall", 3),
-            new Atom("Beryllium", "Alkalist jordartsmetall", 4),
-            new Atom("Bor", "Halvmetall", 5),
-            new Atom("Kol", "icke-metall", 6),
-            new Atom("Kväve", "icke-metall", 7),
-            new Atom("Syre", "icke-metall", 8),
-            new Atom("Fluor", "icke-metall", 9),
-            new Atom("Neon", "Ädelgas", 10)
+            new Atom ("H ","Väte ", "Icke-metaller", 1),
+            new Atom("He ","Helium ", "Ädelgas", 2),
+            new Atom("Li ","Litium ", "Alkalimetall", 3),
+            new Atom("Be ","Beryllium ", "Alkaliskt jordartsmetall", 4),
+            new Atom("B ","Bor ", "Halvmetall", 5),
+            new Atom("C ","Kol ", "icke-metall", 6),
+            new Atom("N ","Kväve ", "icke-metall", 7),
+            new Atom("O ","Syre ", "icke-metall", 8),
+            new Atom("F ","Fluor ", "icke-metall", 9),
+            new Atom("Ne ","Neon ", "Ädelgas", 10)
     ));
 
 
@@ -51,12 +52,12 @@ public class MainActivity extends AppCompatActivity {
         adapter = new RecyclerViewAdapter(this, atoms, new RecyclerViewAdapter.OnClickListener() {
             @Override
             public void onClick(Atom item) {
-                Toast.makeText(MainActivity.this, item.getName(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, item.getType(), Toast.LENGTH_SHORT).show();
             }
         });
 
         RecyclerView view = findViewById(R.id.recycler_view);
-        view.setLayoutManager(new LinearLayoutManager(this));
+        view.setLayoutManager(new GridLayoutManager(this, 1));
         view.setAdapter(adapter);
 
     //    textView.setText(info);
