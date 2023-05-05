@@ -13,17 +13,22 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements JsonTask.JsonTaskListener {
 
-  //  Atom atom = new Atom("Helium", "nonMetal", 1 );
-    //String info = atom.info();
+    private final String JSON_URL = "https://mobprog.webug.se/json-api?login=brom";
 
+    private ArrayList<Atom> atomList;
     private RecyclerViewAdapter adapter;
 
-    ArrayList<Atom> atoms = new ArrayList<>(Arrays.asList(
+   ArrayList<Atom> atoms = new ArrayList<>(Arrays.asList(
             new Atom ("H ","Väte ", "Icke-metaller", 1),
             new Atom("He ","Helium ", "Ädelgas", 2),
             new Atom("Li ","Litium ", "Alkalimetall", 3),
@@ -37,14 +42,14 @@ public class MainActivity extends AppCompatActivity {
     ));
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        atomList = new ArrayList<Atom>();
 
         Button about = findViewById(R.id.about);
         TextView textView = findViewById(R.id.textView);
@@ -60,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         view.setLayoutManager(new GridLayoutManager(this, 1));
         view.setAdapter(adapter);
 
-    //    textView.setText(info);
+        new JsonTask(this).execute(JSON_URL);
 
         about.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,7 +75,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
+
+    @Override
+    public void onPostExecute(String json) {
+      /*  Gson gson = new Gson();
+        Type type = new TypeToken<List<Atom>>() {
+        }.getType();
+
+        atomList = gson.fromJson(json, type);
+        adapter.addData(atomList);
+
+        adapter.notifyDataSetChanged(); */
+    }
 }

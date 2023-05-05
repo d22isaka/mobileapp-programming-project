@@ -65,4 +65,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public interface OnClickListener {
         void onClick(Atom item);
     }
+
+    public void addData(List<Atom> data) {
+
+        this.items = data;
+    }
 }

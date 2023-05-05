@@ -1,7 +1,7 @@
 package com.example.project;
 
 public class Atom {
-    String id;
+    String Id;
     private String name;
     private String type;
     private int atomNumber;
@@ -15,7 +15,7 @@ public class Atom {
 
     public Atom(String i, String n, String t, int a)
     {
-        id=i;
+        Id=i;
         name=n;
         type=t;
         atomNumber=a;
@@ -40,7 +40,10 @@ public class Atom {
     }
 
     public String getId(){
-        return id;
+        return Id;
+    }
+    public void setID(String Id){
+        this.Id=Id;
     }
 
     @Override
