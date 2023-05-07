@@ -30,18 +30,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.id.setText(items.get(position).getId());
+        holder.ID.setText(items.get(position).getId());
         holder.title.setText(items.get(position).getName());
         holder.type.setText(items.get(position).getType());
     }
+    public void addData(List<Atom> data) {
 
-    @Override
-    public int getItemCount() {
-        return items.size();
+        this.items = data;
     }
 
+
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView id;
+        TextView ID;
         TextView title;
         TextView type;
 
@@ -51,7 +51,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             itemView.setOnClickListener(this);
             title = itemView.findViewById(R.id.title);
             type = itemView.findViewById(R.id.type);
-            id = itemView.findViewById(R.id.id);
+            ID = itemView.findViewById(R.id.id);
         }
 
 
@@ -66,8 +66,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         void onClick(Atom item);
     }
 
-    public void addData(List<Atom> data) {
-
-        this.items = data;
+    @Override
+    public int getItemCount() {
+        return  items == null ? 0 : items.size();
     }
+
+
 }

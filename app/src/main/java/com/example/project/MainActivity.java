@@ -23,9 +23,9 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements JsonTask.JsonTaskListener {
 
-    private final String JSON_URL = "https://mobprog.webug.se/json-api?login=brom";
+    private final String JSON_URL = "https://mobprog.webug.se/json-api?login=d22isaka";
 
-    private ArrayList<Atom> atomList;
+    private List<Atom> atomList;
     private RecyclerViewAdapter adapter;
 
    ArrayList<Atom> atoms = new ArrayList<>(Arrays.asList(
@@ -49,6 +49,8 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        new JsonTask(this).execute(JSON_URL);
+
         atomList = new ArrayList<Atom>();
 
         Button about = findViewById(R.id.about);
@@ -62,10 +64,9 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         });
 
         RecyclerView view = findViewById(R.id.recycler_view);
-        view.setLayoutManager(new GridLayoutManager(this, 1));
+        view.setLayoutManager(new LinearLayoutManager(this));
         view.setAdapter(adapter);
 
-        new JsonTask(this).execute(JSON_URL);
 
         about.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,13 +81,15 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
 
     @Override
     public void onPostExecute(String json) {
-      /*  Gson gson = new Gson();
+
+
+        Gson gson = new Gson();
         Type type = new TypeToken<List<Atom>>() {
         }.getType();
 
         atomList = gson.fromJson(json, type);
         adapter.addData(atomList);
 
-        adapter.notifyDataSetChanged(); */
+        adapter.notifyDataSetChanged();
     }
 }

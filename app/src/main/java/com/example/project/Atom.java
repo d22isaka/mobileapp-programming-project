@@ -1,13 +1,20 @@
 package com.example.project;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Atom {
+
+    @SerializedName("size")
+
     String Id;
     private String name;
     private String type;
     private int atomNumber;
 
 
+
     public Atom(){
+        Id="No id";
         name="No name";
         type="No type";
         atomNumber=0;
