@@ -4,11 +4,15 @@ import com.google.gson.annotations.SerializedName;
 
 public class Atom {
 
-    @SerializedName("size")
-
+    @SerializedName("ID")
     String Id;
+    @SerializedName("name")
     private String name;
+
+    @SerializedName("category")
     private String type;
+
+    @SerializedName("cost")
     private int atomNumber;
 
 
