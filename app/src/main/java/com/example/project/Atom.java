@@ -2,7 +2,7 @@ package com.example.project;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Atom {
+public class Atom implements Comparable<Atom>{
 
     @SerializedName("ID")
     String Id;
@@ -70,4 +70,8 @@ public class Atom {
         return name;
     }
 
+    @Override
+    public int compareTo(Atom atom) {
+        return 0;
+    }
 }
