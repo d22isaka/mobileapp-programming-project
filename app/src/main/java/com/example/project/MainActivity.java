@@ -95,8 +95,8 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
 
         Collections.sort(atomList, new Comparator<Atom>() {
             @Override
-            public int compare(Atom o1, Atom o2) {
-                return o1.getNumber().compareTo(o2.getNumber());
+            public int compare(Atom a1, Atom a2) {
+                return a1.getNumber().compareTo(a2.getNumber());
             }
         });
 

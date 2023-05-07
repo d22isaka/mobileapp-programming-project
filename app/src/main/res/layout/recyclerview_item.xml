@@ -7,20 +7,30 @@
 
     <TextView
         android:id="@+id/id"
-        android:layout_width="118dp"
-        android:layout_height="46dp"
+        android:layout_width="120dp"
+        android:layout_height="match_parent"
+        android:background="#8d95a1"
         android:textSize="20sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:gravity="center"/>
 
     <TextView
         android:id="@+id/title"
         android:layout_width="125dp"
-        android:layout_height="46dp"
-        android:textSize="18sp" />
+        android:layout_height="match_parent"
+        android:background="#abaeb3"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        android:gravity="center"
+        />
 
     <TextView
         android:id="@+id/type"
         android:layout_width="138dp"
-        android:layout_height="46dp"
-        android:textSize="18sp" />
+        android:layout_height="match_parent"
+        android:background="#8d95a1"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        android:gravity="center"/>
 </LinearLayout>
