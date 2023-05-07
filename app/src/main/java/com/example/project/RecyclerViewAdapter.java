@@ -32,7 +32,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.ID.setText(items.get(position).getId());
         holder.title.setText(items.get(position).getName());
-        holder.type.setText(items.get(position).getType());
+        holder.type.setText(items.get(position).getNumber());
     }
     public void addData(List<Atom> data) {
 
@@ -68,8 +68,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public int getItemCount() {
-        return  items == null ? 0 : items.size();
+        return items.size();
     }
+
+    //items == null ? 0 : items.size();
 
 
 }

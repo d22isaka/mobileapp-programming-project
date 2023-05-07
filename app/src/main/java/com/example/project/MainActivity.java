@@ -19,6 +19,8 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements JsonTask.JsonTaskListener {
@@ -30,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
 
    ArrayList<Atom> atoms = new ArrayList<>(Arrays.asList(
             new Atom ("H ","Väte ", "Icke-metaller", 1),
+
             new Atom("He ","Helium ", "Ädelgas", 2),
             new Atom("Li ","Litium ", "Alkalimetall", 3),
             new Atom("Be ","Beryllium ", "Alkaliskt jordartsmetall", 4),
@@ -59,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         adapter = new RecyclerViewAdapter(this, atoms, new RecyclerViewAdapter.OnClickListener() {
             @Override
             public void onClick(Atom item) {
-                Toast.makeText(MainActivity.this, item.getName(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, item.getType(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -90,6 +93,15 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         atomList = gson.fromJson(json, type);
         adapter.addData(atomList);
 
+        Collections.sort(atomList, new Comparator<Atom>() {
+            @Override
+            public int compare(Atom o1, Atom o2) {
+                return o1.getNumber().compareTo(o2.getNumber());
+            }
+        });
+
         adapter.notifyDataSetChanged();
+
+
     }
 }

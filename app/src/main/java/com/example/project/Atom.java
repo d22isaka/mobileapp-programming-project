@@ -9,11 +9,13 @@ public class Atom {
     @SerializedName("name")
     private String name;
 
+    @SerializedName("size")
+    private int atomNumber;
+
     @SerializedName("category")
     private String type;
 
-    @SerializedName("cost")
-    private int atomNumber;
+
 
 
 
@@ -21,15 +23,17 @@ public class Atom {
         Id="No id";
         name="No name";
         type="No type";
-        atomNumber=0;
+        atomNumber=1;
+
     }
 
     public Atom(String i, String n, String t, int a)
     {
         Id=i;
         name=n;
-        type=t;
         atomNumber=a;
+        type=t;
+
     }
 
     public String info(){
@@ -52,6 +56,10 @@ public class Atom {
 
     public String getId(){
         return Id;
+    }
+
+    public String getNumber(){
+        return Integer.toString(atomNumber);
     }
     public void setID(String Id){
         this.Id=Id;
