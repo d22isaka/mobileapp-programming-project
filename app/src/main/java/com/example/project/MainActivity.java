@@ -30,18 +30,18 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
     private List<Atom> atomList;
     private RecyclerViewAdapter adapter;
 
-   ArrayList<Atom> atoms = new ArrayList<>(Arrays.asList(
-            new Atom ("H ","Väte ", "Icke-metaller", 1),
+    ArrayList<Atom> atoms = new ArrayList<>(Arrays.asList(
+            new Atom("H ", "Väte ", "Icke-metaller", 1),
 
-            new Atom("He ","Helium ", "Ädelgas", 2),
-            new Atom("Li ","Litium ", "Alkalimetall", 3),
-            new Atom("Be ","Beryllium ", "Alkaliskt jordartsmetall", 4),
-            new Atom("B ","Bor ", "Halvmetall", 5),
-            new Atom("C ","Kol ", "icke-metall", 6),
-            new Atom("N ","Kväve ", "icke-metall", 7),
-            new Atom("O ","Syre ", "icke-metall", 8),
-            new Atom("F ","Fluor ", "icke-metall", 9),
-            new Atom("Ne ","Neon ", "Ädelgas", 10)
+            new Atom("He ", "Helium ", "Ädelgas", 2),
+            new Atom("Li ", "Litium ", "Alkalimetall", 3),
+            new Atom("Be ", "Beryllium ", "Alkaliskt jordartsmetall", 4),
+            new Atom("B ", "Bor ", "Halvmetall", 5),
+            new Atom("C ", "Kol ", "icke-metall", 6),
+            new Atom("N ", "Kväve ", "icke-metall", 7),
+            new Atom("O ", "Syre ", "icke-metall", 8),
+            new Atom("F ", "Fluor ", "icke-metall", 9),
+            new Atom("Ne ", "Neon ", "Ädelgas", 10)
     ));
 
 
@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
 
         Button about = findViewById(R.id.about);
         TextView textView = findViewById(R.id.textView);
+        TextView category = findViewById(R.id.category);
 
         adapter = new RecyclerViewAdapter(this, atoms, new RecyclerViewAdapter.OnClickListener() {
             @Override
@@ -79,6 +80,7 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
             }
         });
 
+
     }
 
 
@@ -93,10 +95,11 @@ public class MainActivity extends AppCompatActivity implements JsonTask.JsonTask
         atomList = gson.fromJson(json, type);
         adapter.addData(atomList);
 
+
         Collections.sort(atomList, new Comparator<Atom>() {
             @Override
             public int compare(Atom a1, Atom a2) {
-                return a1.getNumber().compareTo(a2.getNumber());
+                return a1.getName().compareTo(a2.getName());
             }
         });
 

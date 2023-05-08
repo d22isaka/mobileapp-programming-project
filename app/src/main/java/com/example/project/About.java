@@ -11,7 +11,7 @@ public class About extends AppCompatActivity {
 
     WebView myWebView;
 
-    public void showInternalWebPage(){
+    public void showInternalWebPage() {
 
         myWebView.loadUrl("file:///android_asset/about.html");
     }
